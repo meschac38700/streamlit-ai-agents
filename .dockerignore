@@ -1,0 +1,11 @@
+README.md
+.pre-commit*
+.gitignore
+tests
+**__pycache__
+.venv
+.env
+.ruff_cache
+Dockerfile
+docker-compose*.yaml
+preview

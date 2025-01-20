@@ -1,28 +1,34 @@
-import streamlit as st
+import os
+
 from openai import OpenAI
 
-openai_api_key = ""
-st.title("💬 Chatbot")
+from models import Assistant, Chat, User
 
-if "messages" not in st.session_state:
-    st.session_state["messages"] = [
-        {"role": "assistant", "content": "How can I help you?"}
-    ]
+from agents import AgentA, AgentB  # isort: skip
 
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input():
-    if not openai_api_key:
-        st.info("Please add your OpenAI API key to continue.")
-        st.stop()
+def main():
+    chat = Chat()
+    chat.start_dialog()
 
-    client = OpenAI(api_key=openai_api_key)
-    st.session_state.messages.append({"role": "user", "content": prompt})
-    st.chat_message("user").write(prompt)
-    response = client.chat.completions.create(
-        model="gpt-3.5-turbo", messages=st.session_state.messages
-    )
-    msg = response.choices[0].message.content
-    st.session_state.messages.append({"role": "assistant", "content": msg})
-    st.chat_message("assistant").write(msg)
+    openai_api_key = os.getenv("OPENAI_API_KEY")
+    model = os.getenv("OPENAI_MODEL") or "gpt-3.5-turbo"
+
+    client = OpenAI(api_key=openai_api_key) if openai_api_key else None
+
+    agent_a = AgentA()
+    agent_b = AgentB(client, model)
+    assistant = Assistant(agent_a, agent_b)
+
+    user = User()
+    if prompt := chat.prompt:
+        user.write(chat, prompt)
+
+        resolved = assistant.trigger_response(chat)
+
+        if not resolved and client is None:
+            chat.exit("Please check your OpenAI API key to continue.")
+
+
+if __name__ == "__main__":
+    main()
