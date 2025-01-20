@@ -55,3 +55,9 @@ You can also start the server without enabling the uv environment
 ```bash
 uv run streamlit run main.py
 ```
+
+#### Run tests
+
+```bash
+pytest
+```

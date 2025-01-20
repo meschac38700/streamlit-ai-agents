@@ -23,3 +23,6 @@ class DialogList(BaseModel):
             return None
 
         return self.dialog_mapping[key].steps_to_string()
+
+    def __len__(self) -> int:
+        return len(self.dialogs)

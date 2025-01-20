@@ -4,8 +4,9 @@ from pathlib import Path
 from models.pydantic import DialogList
 
 
-def get_static_data() -> DialogList:
-    dataset_path = Path(__file__).parent.parent / "datasets" / "static.json"
+def get_static_data(filepath: str | Path) -> DialogList:
+    """Read and parse the given dataset filepath."""
+    dataset_path = Path(filepath)
     if not dataset_path.exists():
         raise ValueError(f"Cannot found dataset file: {dataset_path}")
 

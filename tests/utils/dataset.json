@@ -1,0 +1,26 @@
+{
+	"troubleshooting_scenarios": [
+		{
+			"issue": "Computer won't turn on",
+			"steps": [
+				"Check if the power cable is properly connected to the computer and the power outlet.",
+				"Ensure the power outlet is working by testing another device.",
+				"Press the power button firmly for at least 5 seconds.",
+				"If the computer still doesn't turn on, try using a different power cable.",
+				"Inspect the power supply unit for any visible damage or loose connections.",
+				"If all else fails, consult a professional technician."
+			]
+		},
+		{
+			"issue": "No internet connection",
+			"steps": [
+				"Confirm that the network cable is securely connected to both the computer and the router.",
+				"Restart the router by unplugging it for 10 seconds and plugging it back in.",
+				"Check if the Wi-Fi is turned on, if using a wireless connection.",
+				"Run the network troubleshooter tool on your computer.",
+				"Verify the status of the network adapter in the device manager.",
+				"Reset the TCP/IP stack using the command prompt if problems persist."
+			]
+		}
+	]
+}
