@@ -1,5 +1,7 @@
 ## Simple AI Assistant
 
+![Application preview image](./preview/app-preview.png "Application preview image")
+
 ---
 
 ```mermaid
