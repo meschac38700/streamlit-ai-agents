@@ -2,8 +2,9 @@ import os
 
 from openai import OpenAI
 
-from agents import AgentA, AgentB
 from models import Assistant, Chat, User
+
+from agents import AgentA, AgentB  # isort: skip
 
 
 def main():
