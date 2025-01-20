@@ -38,4 +38,4 @@ class Assistant:
         return self.agent_a.get_response(question)
 
     def _get_agent_b_response(self, messages: OpenAIMessages) -> str | None:
-        self.agent_b.get_response(messages)
+        return self.agent_b.get_response(messages)
